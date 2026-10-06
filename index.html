@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SpendWise - Budget Tracker</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">S</div>
+            <div>
+                <h2>SpendWise</h2>
+                <p>Budget Tracker</p>
+            </div>
+        </div>
+
+        <nav class="navigation">
+
+            <a href="#" class="nav-link active">
+                <span>📊</span>
+                Dashboard
+            </a>
+
+            <a href="#expenses" class="nav-link">
+                <span>💳</span>
+                Expenses
+            </a>
+
+            <a href="#budget" class="nav-link">
+                <span>💰</span>
+                Budget
+            </a>
+
+            <a href="#reports" class="nav-link">
+                <span>📈</span>
+                Reports
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <p>Spend smarter.</p>
+            <p>Live better.</p>
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+    <main class="main-content">
+
+        <!-- HEADER -->
+        <header class="top-header">
+
+            <div>
+                <h1>Dashboard</h1>
+                <p>Track your income and expenses in one place.</p>
+            </div>
+
+            <div class="profile">
+                <div class="profile-avatar">DB</div>
+                <div>
+                    <strong>Daniel</strong>
+                    <small>Student</small>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             SUMMARY CARDS
+        ========================== -->
+        <section class="summary-grid">
+
+            <div class="summary-card">
+                <div class="card-icon">💰</div>
+                <div>
+                    <p>Monthly Budget</p>
+                    <h2 id="budgetDisplay">KES 50,000</h2>
+                </div>
+            </div>
+
+            <div class="summary-card">
+                <div class="card-icon">💳</div>
+                <div>
+                    <p>Total Expenses</p>
+                    <h2 id="expenseDisplay">KES 8,000</h2>
+                </div>
+            </div>
+
+            <div class="summary-card">
+                <div class="card-icon">💵</div>
+                <div>
+                    <p>Remaining Balance</p>
+                    <h2 id="balanceDisplay">KES 42,000</h2>
+                </div>
+            </div>
+
+            <div class="summary-card">
+                <div class="card-icon">📅</div>
+                <div>
+                    <p>Weekly Budget</p>
+                    <h2 id="weeklyDisplay">KES 12,500</h2>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             BUDGET SECTION
+        ========================== -->
+        <section class="content-section" id="budget">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Budget Information</h2>
+                    <p>Set your monthly budget and monitor your spending.</p>
+                </div>
+            </div>
+
+            <div class="budget-box">
+
+                <div class="budget-info">
+                    <span>Current Budget</span>
+                    <strong id="currentBudget">KES 50,000</strong>
+                </div>
+
+                <div class="budget-progress">
+                    <div class="progress-track">
+                        <div class="progress-bar" id="progressBar"></div>
+                    </div>
+
+                    <div class="progress-text">
+                        <span id="progressText">16% used</span>
+                        <span id="budgetStatus">Within budget</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             EXPENSE FORM
+        ========================== -->
+        <section class="content-section" id="expenses">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Add Expense</h2>
+                    <p>Record your spending information.</p>
+                </div>
+            </div>
+
+            <form id="expenseForm" class="expense-form">
+
+                <div class="form-group">
+                    <label for="expenseName">Expense Name</label>
+                    <input
+                        type="text"
+                        id="expenseName"
+                        placeholder="e.g. Lunch"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="expenseAmount">Amount (KES)</label>
+                    <input
+                        type="number"
+                        id="expenseAmount"
+                        placeholder="e.g. 500"
+                        min="0"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="expenseCategory">Category</label>
+
+                    <select id="expenseCategory" required>
+                        <option value="">Select category</option>
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Rent">Rent</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Savings">Savings</option>
+                        <option value="Utilities">Utilities</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="expenseDate">Date</label>
+
+                    <input
+                        type="date"
+                        id="expenseDate"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="primary-button">
+                    + Add Expense
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- =========================
+             EXPENSE TABLE
+        ========================== -->
+        <section class="content-section" id="reports">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Recent Expenses</h2>
+                    <p>Your latest spending activity.</p>
+                </div>
+            </div>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Expense</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="expenseTableBody">
+
+                        <tr>
+                            <td>Lunch</td>
+                            <td>
+                                <span class="category-badge food">
+                                    Food
+                                </span>
+                            </td>
+                            <td>29 Sep 2026</td>
+                            <td>KES 500</td>
+                        </tr>
+
+                        <tr>
+                            <td>Bus Fare</td>
+                            <td>
+                                <span class="category-badge transport">
+                                    Transport
+                                </span>
+                            </td>
+                            <td>28 Sep 2026</td>
+                            <td>KES 300</td>
+                        </tr>
+
+                        <tr>
+                            <td>Electricity</td>
+                            <td>
+                                <span class="category-badge utilities">
+                                    Utilities
+                                </span>
+                            </td>
+                            <td>27 Sep 2026</td>
+                            <td>KES 1,200</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CATEGORY CARDS
+        ========================== -->
+        <section class="content-section">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Spending Categories</h2>
+                    <p>Monitor where your money goes.</p>
+                </div>
+            </div>
+
+            <div class="category-grid">
+
+                <div class="category-card">
+                    <span>🍔</span>
+                    <h3>Food</h3>
+                    <p>Meals and groceries</p>
+                </div>
+
+                <div class="category-card">
+                    <span>🚌</span>
+                    <h3>Transport</h3>
+                    <p>Travel expenses</p>
+                </div>
+
+                <div class="category-card">
+                    <span>🏠</span>
+                    <h3>Rent</h3>
+                    <p>Housing costs</p>
+                </div>
+
+                <div class="category-card">
+                    <span>🎬</span>
+                    <h3>Entertainment</h3>
+                    <p>Fun and activities</p>
+                </div>
+
+                <div class="category-card">
+                    <span>💎</span>
+                    <h3>Savings</h3>
+                    <p>Money saved</p>
+                </div>
+
+                <div class="category-card">
+                    <span>💡</span>
+                    <h3>Utilities</h3>
+                    <p>Bills and services</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FOOTER
+        ========================== -->
+        <footer>
+
+            <p>
+                © 2026 SpendWise. Built for smarter budgeting.
+            </p>
+
+        </footer>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+</html>
